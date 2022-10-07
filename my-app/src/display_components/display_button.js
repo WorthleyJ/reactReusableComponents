@@ -5,35 +5,63 @@ import GlobalButton from "../global_components/button";
 class Button extends React.Component {
     constructor(props) {
         super(props);
-        // this.handleMouseMove = this.handleMouseMove.bind(this);
+        this.handleButtonClick = this.handleButtonClick.bind(this);
+        this.handleResetButtonClick = this.handleResetButtonClick.bind(this);
         this.state = { 
             displayedInfo: "info will replace this text"
         };
     }
 
+    handleButtonClick(displayedInfo) {
+        this.setState((state, props) => {
+            return { displayedInfo };
+          });
+    }
+
+    handleResetButtonClick() {
+        this.setState((state, props) => {
+            return { displayedInfo: "info will replace this text" };
+          });
+    }
+
     createButtons() {
         const buttons = [{
-            buttonColor: "red",
-            fontColor: "white",
-            border: true,
-            info: "A red button with white text and a visible border"
+            buttonStyle: "red-btn",
+            disabled: false,
+            onClick: this.handleButtonClick,
+            info: "A red button"
+        },{
+            buttonStyle: "blue-btn",
+            disabled: false,
+            onClick: this.handleButtonClick,
+            info: "A blue button"
         }, {
-            buttonColor: "blue",
-            fontColor: "white",
-            border: false,
-            info: "A blue button with white text and a no visible border"
+            // buttonStyle: "", // button will take the default class
+            disabled: false,
+            onClick: this.handleButtonClick,
+            info: "A default button"
         }, {
-            buttonColor: "yellow",
-            fontColor: "black",
-            border: true,
-            info: "A yellow button with black text and a visible border"
+            buttonStyle: "red-btn",
+            disabled: true,
+            onClick: this.handleButtonClick,
+            info: "Button disabled"
+        }, {
+            buttonStyle: "green-btn",
+            disabled: false,
+            onClick: this.handleResetButtonClick,
+            info: "Reset info text"
         }];
 
-        return buttons.forEach((info) => {
-            <GlobalButton
+        const buttonGroup = buttons.map((info, index) => {
+            return <GlobalButton
                 buttonInfo={info}
+                key={index}
             />
         });
+    
+        return <div>
+            {buttonGroup}
+        </div>;
     }
 
     infoDisplay() {
@@ -44,8 +72,6 @@ class Button extends React.Component {
 
 
     render() {
-        console.log("props:", this.props);
-
         return <div>
             <h2>Here are 3 buttons</h2>
             <p>click them to learn more</p>

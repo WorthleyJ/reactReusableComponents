@@ -11,3 +11,38 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* defaults */
+
+.default-btn {
+  height: 90px;
+  width: 90px;
+  border: solid black 3px;
+  color: black;
+  background-color: tan;
+  margin: 10px;
+  padding: 10px;
+}
+
+
+/* custom */
+
+.red-btn {
+  height: 100px;
+  width: 100px;
+  border: solid black 3px;
+  color: white;
+  background-color: red;
+  margin: 10px;
+  padding: 10px;
+}
+
+.blue-btn {
+  height: 100px;
+  width: 100px;
+  border: solid black 3px;
+  color: white;
+  background-color: blue;
+  margin: 10px;
+  padding: 10px;
+}
